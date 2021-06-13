@@ -16,8 +16,36 @@ export class AppComponent {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'applicant_address',
-      type: 'address'
+      key: 'name',
+      type: 'input',
+      templateOptions: {
+        label: 'Name'
+      }
+    },
+    {
+      key: 'shipping_address',
+      fieldGroup: [{
+        key: 'add',
+        type: 'address',
+        templateOptions: {
+          title: 'Shipping Address'
+        }
+      }],
+    },
+    {
+      key: 'billing_address',
+      fieldGroup: [{
+        key: 'add',
+        type: 'address',
+        templateOptions: {
+          title: 'Billing Address'
+        }
+      }],
     }
   ]
+
+  onSubmit() {
+    alert(JSON.stringify(this.model));
+    console.log(this.model);
+  }
 }

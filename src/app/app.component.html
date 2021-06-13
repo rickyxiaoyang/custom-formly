@@ -5,7 +5,10 @@
       [fields]="fields"
       [options]="options"
     ></formly-form>
+    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
   </form>
+
+  <pre>{{ model | json }}</pre>
   <!--
   <router-outlet></router-outlet> -->
 </div>
