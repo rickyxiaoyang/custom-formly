@@ -19,14 +19,14 @@
         <td>
           <button
             type="button"
-            class="btn btn-warning btn-xs"
+            class="btn btn-warning btn-sm btn-xs"
             (click)="edit(i)"
           >
             {{ to.editButton || editButton }}
           </button>
           <button
             type="button"
-            class="btn btn-danger btn-xs"
+            class="btn btn-danger btn-sm btn-xs"
             (click)="remove(i)"
           >
             {{ to.deleteButton || deleteButton }}
@@ -40,7 +40,7 @@
     <button
       type="button"
       #openModal
-      class="btn btn-secondary btn-sm mt-2"
+      class="btn btn-primary btn-sm mt-2"
       data-bs-toggle="modal"
       data-bs-target="#modal"
     >
@@ -90,7 +90,7 @@
         <button
           type="button"
           (click)="onSave(mdl)"
-          class="btn btn-secondary btn-sm"
+          class="btn btn-primary btn-sm"
         >
           {{ this.index == -1 ? "Add" : "Save" }}
         </button>

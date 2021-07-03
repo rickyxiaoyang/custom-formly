@@ -49,6 +49,13 @@ export class AppComponent {
     {
       key: 'multi-row-example',
       type: 'multi-row',
+      templateOptions: {
+        addButton: 'Add a Row',
+        editButton: 'Edit',
+        deleteButton: 'Remove',
+        label: 'Add Row',
+        modalTitle: 'Modal title',
+      },
       fieldArray: {
         fieldGroup: [
           {

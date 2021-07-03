@@ -1,14 +1,22 @@
 import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
-import { FieldArrayType, FormlyField, FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import {
+  FieldArrayType,
+  FormlyField,
+  FormlyFieldConfig,
+  FormlyFormOptions,
+} from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'formly-multi-row',
   templateUrl: './multi-row.component.html',
-  styleUrls: ['./multi-row.component.scss']
+  styleUrls: ['./multi-row.component.scss'],
 })
-export class MultiRowComponent extends FieldArrayType implements AfterContentInit {
+export class MultiRowComponent
+  extends FieldArrayType
+  implements AfterContentInit
+{
   //Modal button references
   @ViewChild('closeModal') closeModal: any;
   @ViewChild('openModal') openModal: any;
@@ -26,10 +34,13 @@ export class MultiRowComponent extends FieldArrayType implements AfterContentIni
 
   constructor() {
     super();
+    console.log(this);
   }
 
   ngAfterContentInit() {
-    this.singleField = JSON.parse(JSON.stringify(this.field.fieldArray?.fieldGroup));
+    this.singleField = JSON.parse(
+      JSON.stringify(this.field.fieldArray?.fieldGroup)
+    );
   }
 
   onSave(model: any) {
