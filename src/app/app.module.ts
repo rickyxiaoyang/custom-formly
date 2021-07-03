@@ -10,11 +10,7 @@ import { AddressComponent } from './components/address/address.component';
 import { MultiRowComponent } from './components/multi-row/multi-row.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AddressComponent,
-    MultiRowComponent
-  ],
+  declarations: [AppComponent, AddressComponent, MultiRowComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,13 +18,14 @@ import { MultiRowComponent } from './components/multi-row/multi-row.component';
     FormlyModule.forRoot({
       extras: { lazyRender: true },
       types: [
-        { name: 'address', component: AddressComponent }
-      ]
+        { name: 'address', component: AddressComponent },
+        { name: 'multi-row', component: MultiRowComponent },
+      ],
     }),
     FormlyBootstrapModule,
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

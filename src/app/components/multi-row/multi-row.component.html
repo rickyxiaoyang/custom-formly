@@ -1,1 +1,100 @@
-<p>multi-row works!</p>
+<div class="container col-md-12">
+  <label>{{ to.label }}</label>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" *ngFor="let field of singleField; let i = index">
+          {{ field.templateOptions!.label }}
+        </th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of model; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td *ngFor="let col of singleField">
+          {{ row[col.key!.toString()] | titlecase }}
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning btn-xs"
+            (click)="edit(i)"
+          >
+            {{ to.editButton || editButton }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger btn-xs"
+            (click)="remove(i)"
+          >
+            {{ to.deleteButton || deleteButton }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!model.length" class="text-center">No data currently.</p>
+  <div class="d-flex justify-content-center justify-content-sm-end">
+    <button
+      type="button"
+      #openModal
+      class="btn btn-secondary btn-sm mt-2"
+      data-bs-toggle="modal"
+      data-bs-target="#modal"
+    >
+      {{ to.addButton || addButton }}
+    </button>
+  </div>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  aria-labelledby="modal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ to.modalTitle }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <formly-form
+            [model]="mdl"
+            [fields]="singleField"
+            [options]="options"
+            [form]="modalForm"
+          ></formly-form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          (click)="close()"
+          #closeModal
+          class="btn btn-secondary btn-sm"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          (click)="onSave(mdl)"
+          class="btn btn-secondary btn-sm"
+        >
+          {{ this.index == -1 ? "Add" : "Save" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
